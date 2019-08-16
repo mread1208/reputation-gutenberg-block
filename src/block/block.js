@@ -11,7 +11,8 @@ import "./editor.scss";
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-const { TextControl } = wp.components;
+const { InspectorControls } = wp.editor;
+const { TextControl, PanelBody, PanelRow } = wp.components;
 /**
  * Register: aa Gutenberg Block.
  *
@@ -84,91 +85,153 @@ registerBlockType("cgb/block-reputation-bar", {
 	 */
 	edit: function(props) {
 		const attributes = props.attributes;
-		// Creates a <p class='wp-block-cgb-block-reputation-bar'></p>.
-		return (
+		return [
+			<InspectorControls>
+				<PanelBody title={__("Reputation Bar Settings")}>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionOneTitle: content })
+							}
+							label="Column 1 Heading"
+							value={attributes.sectionOneTitle}
+							placeholder="200"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionOneSubTitle: content })
+							}
+							label="Column 1 Sub-Heading"
+							value={attributes.sectionOneSubTitle}
+							placeholder="Cases Won"
+							className="heading"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionOneIcon: content })
+							}
+							label="Column 1 Font Awesome Icon Name (ex. gavel, exclude 'fa-')"
+							value={attributes.sectionOneIcon}
+							placeholder="gavel"
+							className="heading"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionTwoTitle: content })
+							}
+							label="Column 2 Heading"
+							value={attributes.sectionTwoTitle}
+							placeholder="200"
+							className="heading"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionTwoSubTitle: content })
+							}
+							label="Column 2 Sub-Heading"
+							value={attributes.sectionTwoSubTitle}
+							placeholder="Cases Won"
+							className="heading"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionTwoIcon: content })
+							}
+							label="Column 2 Font Awesome Icon Name (ex. gavel, exclude 'fa-')"
+							value={attributes.sectionTwoIcon}
+							placeholder="gavel"
+							className="heading"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionThreeTitle: content })
+							}
+							label="Column 3 Heading"
+							value={attributes.sectionThreeTitle}
+							placeholder="200"
+							className="heading"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionThreeSubTitle: content })
+							}
+							label="Column 3 Sub-Heading"
+							value={attributes.sectionThreeSubTitle}
+							placeholder="Cases Won"
+							className="heading"
+						/>
+					</PanelRow>
+					<PanelRow>
+						<TextControl
+							onChange={content =>
+								props.setAttributes({ sectionThreeIcon: content })
+							}
+							label="Column 3 Font Awesome Icon Name (ex. gavel, exclude 'fa-')"
+							value={attributes.sectionThreeIcon}
+							placeholder="gavel"
+							className="heading"
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>,
 			<div className={props.className}>
-				<p>
-					{attributes.sectionOneTitle} — {attributes.sectionOneSubTitle} -
-					{attributes.sectionOneIcon}
-				</p>
-				<TextControl
-					onChange={content =>
-						props.setAttributes({ sectionOneTitle: content })
-					}
-					value={attributes.sectionOneTitle}
-					placeholder="Reputation Column 1 Heading"
-					className="heading"
-				/>
-				<TextControl
-					onChange={content =>
-						props.setAttributes({ sectionOneSubTitle: content })
-					}
-					value={attributes.sectionOneSubTitle}
-					placeholder="Reputation Column 1 Sub-Heading"
-					className="heading"
-				/>
-				<TextControl
-					onChange={content => props.setAttributes({ sectionOneIcon: content })}
-					value={attributes.sectionOneIcon}
-					placeholder="Reputation Column 1 Icon (ex. gavel)"
-					className="heading"
-				/>
-				<p>
-					{attributes.sectionTwoTitle} — {attributes.sectionTwoSubTitle} -
-					{attributes.sectionTwoIcon}
-				</p>
-				<TextControl
-					onChange={content =>
-						props.setAttributes({ sectionTwoTitle: content })
-					}
-					value={attributes.sectionTwoTitle}
-					placeholder="Reputation Column 2 Heading"
-					className="heading"
-				/>
-				<TextControl
-					onChange={content =>
-						props.setAttributes({ sectionTwoSubTitle: content })
-					}
-					value={attributes.sectionTwoSubTitle}
-					placeholder="Reputation Column 2 Sub-Heading"
-					className="heading"
-				/>
-				<TextControl
-					onChange={content => props.setAttributes({ sectionTwoIcon: content })}
-					value={attributes.sectionTwoIcon}
-					placeholder="Reputation Column 2 Icon (ex. gavel)"
-					className="heading"
-				/>
-				<p>
-					{attributes.sectionThreeTitle} — {attributes.sectionThreeSubTitle} -
-					{attributes.sectionThreeIcon}
-				</p>
-				<TextControl
-					onChange={content =>
-						props.setAttributes({ sectionThreeTitle: content })
-					}
-					value={attributes.sectionThreeTitle}
-					placeholder="Reputation Column 3 Heading"
-					className="heading"
-				/>
-				<TextControl
-					onChange={content =>
-						props.setAttributes({ sectionThreeSubTitle: content })
-					}
-					value={attributes.sectionThreeSubTitle}
-					placeholder="Reputation Column 3 Sub-Heading"
-					className="heading"
-				/>
-				<TextControl
-					onChange={content =>
-						props.setAttributes({ sectionThreeIcon: content })
-					}
-					value={attributes.sectionThreeIcon}
-					placeholder="Reputation Column 3 Icon (ex. gavel)"
-					className="heading"
-				/>
+				<div className={`reputation-bar`}>
+					<div className="reputation-bar--item">
+						<div className="reputation-bar--item--icon">
+							<i className={`fa fa-${attributes.sectionOneIcon}`} />
+						</div>
+						<div className="reputation-bar--item--content">
+							<p className="reputation-bar--item--content--number">
+								{attributes.sectionOneTitle}
+							</p>
+							<p className="reputation-bar--item--content--text">
+								{attributes.sectionOneSubTitle}
+							</p>
+						</div>
+					</div>
+					<div className="reputation-bar--item">
+						<div className="reputation-bar--item--icon">
+							<i className={`fa fa-${attributes.sectionTwoIcon}`} />
+						</div>
+						<div className="reputation-bar--item--content">
+							<p className="reputation-bar--item--content--number">
+								{attributes.sectionTwoTitle}
+							</p>
+							<p className="reputation-bar--item--content--text">
+								{attributes.sectionTwoSubTitle}
+							</p>
+						</div>
+					</div>
+					<div className="reputation-bar--item">
+						<div className="reputation-bar--item--icon">
+							<i className={`fa fa-${attributes.sectionThreeIcon}`} />
+						</div>
+						<div className="reputation-bar--item--content">
+							<p className="reputation-bar--item--content--number">
+								{attributes.sectionThreeTitle}
+							</p>
+							<p className="reputation-bar--item--content--text">
+								{attributes.sectionThreeSubTitle}
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-		);
+		];
 	},
 
 	/**
@@ -182,44 +245,46 @@ registerBlockType("cgb/block-reputation-bar", {
 	save: function(props) {
 		const attributes = props.attributes;
 		return (
-			<div className="reputation-bar">
-				<div className="reputation-bar--item">
-					<div className="reputation-bar--item--icon">
-						<i className={`fa fa-${attributes.sectionOneIcon}`} />
+			<div>
+				<div className="reputation-bar">
+					<div className="reputation-bar--item">
+						<div className="reputation-bar--item--icon">
+							<i className={`fa fa-${attributes.sectionOneIcon}`} />
+						</div>
+						<div className="reputation-bar--item--content">
+							<p className="reputation-bar--item--content--number">
+								{attributes.sectionOneTitle}
+							</p>
+							<p className="reputation-bar--item--content--text">
+								{attributes.sectionOneSubTitle}
+							</p>
+						</div>
 					</div>
-					<div className="reputation-bar--item--content">
-						<p className="reputation-bar--item--content--number">
-							{attributes.sectionOneTitle}
-						</p>
-						<p className="reputation-bar--item--content--text">
-							{attributes.sectionOneSubTitle}
-						</p>
+					<div className="reputation-bar--item">
+						<div className="reputation-bar--item--icon">
+							<i className={`fa fa-${attributes.sectionTwoIcon}`} />
+						</div>
+						<div className="reputation-bar--item--content">
+							<p className="reputation-bar--item--content--number">
+								{attributes.sectionTwoTitle}
+							</p>
+							<p className="reputation-bar--item--content--text">
+								{attributes.sectionTwoSubTitle}
+							</p>
+						</div>
 					</div>
-				</div>
-				<div className="reputation-bar--item">
-					<div className="reputation-bar--item--icon">
-						<i className={`fa fa-${attributes.sectionTwoIcon}`} />
-					</div>
-					<div className="reputation-bar--item--content">
-						<p className="reputation-bar--item--content--number">
-							{attributes.sectionTwoTitle}
-						</p>
-						<p className="reputation-bar--item--content--text">
-							{attributes.sectionTwoSubTitle}
-						</p>
-					</div>
-				</div>
-				<div className="reputation-bar--item">
-					<div className="reputation-bar--item--icon">
-						<i className={`fa fa-${attributes.sectionThreeIcon}`} />
-					</div>
-					<div className="reputation-bar--item--content">
-						<p className="reputation-bar--item--content--number">
-							{attributes.sectionThreeTitle}
-						</p>
-						<p className="reputation-bar--item--content--text">
-							{attributes.sectionThreeSubTitle}
-						</p>
+					<div className="reputation-bar--item">
+						<div className="reputation-bar--item--icon">
+							<i className={`fa fa-${attributes.sectionThreeIcon}`} />
+						</div>
+						<div className="reputation-bar--item--content">
+							<p className="reputation-bar--item--content--number">
+								{attributes.sectionThreeTitle}
+							</p>
+							<p className="reputation-bar--item--content--text">
+								{attributes.sectionThreeSubTitle}
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

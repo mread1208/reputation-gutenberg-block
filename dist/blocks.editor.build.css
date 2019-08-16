@@ -10,55 +10,18 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block
-.components-panel__body
-.components-base-control {
-  width: 100%; }
+@media (min-width: 600px) {
+  .wp-block-cgb-block-reputation-bar .reputation-bar {
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; } }
 
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block .repeater-row-wrapper {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: stretch;
-      align-items: stretch;
-  border-bottom: 1px solid #e2e4e7;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
-  background: inherit; }
-
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block .repeater-row-wrapper:last-child {
-  border: none; }
-
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block
-.components-panel__body
-.repeater-row-wrapper
-.components-base-control {
-  margin: 0 0 0.5em; }
-
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block .repeater-row-inner {
-  -ms-flex: 1;
-      flex: 1; }
-
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block
-.repeater-row-wrapper
-.button-wrapper {
-  margin-top: 23px;
-  margin-bottom: 7px; }
-
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block
-.repeater-row-wrapper
-.button-wrapper
-button {
-  margin-left: 10px;
-  display: block; }
-
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block
-.repeater-row-wrapper
-.button-wrapper
-button.is-large {
-  height: 100%; }
-
-.wp-block-cgb-block-reputation-bar .edit-post-settings-sidebar__panel-block .repeater-row-add.is-large {
-  width: 100%;
-  display: inline-block; }
+@media (min-width: 600px) {
+  .wp-block-cgb-block-reputation-bar .reputation-bar .reputation-bar--item {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    margin-bottom: 20px; } }

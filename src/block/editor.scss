@@ -5,55 +5,19 @@
  * which makes it higher in priority.
  */
 
-.wp-block-cgb-block-reputation-bar {
-	.edit-post-settings-sidebar__panel-block
-		.components-panel__body
-		.components-base-control {
-		width: 100%;
-	}
-	.edit-post-settings-sidebar__panel-block .repeater-row-wrapper {
+// Basically undo all responsive styles, make everything stack
+.wp-block-cgb-block-reputation-bar .reputation-bar {
+	@media (min-width: 600px) {
 		display: flex;
-		flex-direction: row;
-		align-items: stretch;
-		border-bottom: 1px solid #e2e4e7;
-		margin-bottom: 10px;
-		padding-bottom: 5px;
-		background: inherit;
-	}
-	.edit-post-settings-sidebar__panel-block .repeater-row-wrapper:last-child {
-		border: none;
-	}
-	.edit-post-settings-sidebar__panel-block
-		.components-panel__body
-		.repeater-row-wrapper
-		.components-base-control {
-		margin: 0 0 0.5em;
-	}
-	.edit-post-settings-sidebar__panel-block .repeater-row-inner {
-		flex: 1;
-	}
-	.edit-post-settings-sidebar__panel-block
-		.repeater-row-wrapper
-		.button-wrapper {
-		margin-top: 23px;
-		margin-bottom: 7px;
-	}
-	.edit-post-settings-sidebar__panel-block
-		.repeater-row-wrapper
-		.button-wrapper
-		button {
-		margin-left: 10px;
-		display: block;
+		width: 100%;
+		flex-wrap: wrap;
 	}
 
-	.edit-post-settings-sidebar__panel-block
-		.repeater-row-wrapper
-		.button-wrapper
-		button.is-large {
-		height: 100%;
-	}
-	.edit-post-settings-sidebar__panel-block .repeater-row-add.is-large {
-		width: 100%;
-		display: inline-block;
+	.reputation-bar--item {
+		@media (min-width: 600px) {
+			display: flex;
+			flex-basis: 100%;
+			margin-bottom: 20px;
+		}
 	}
 }

@@ -4,5 +4,50 @@
  * CSS for both Frontend+Backend.
  */
 
-.wp-block-cgb-block-reputation-bar {
+$reputation-bar-bp: 450px;
+
+.wp-block-cgb-block-reputation-bar .reputation-bar {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+
+	@media (min-width: 600px) {
+		flex-wrap: nowrap;
+	}
+
+	.reputation-bar--item {
+		display: flex;
+		flex-basis: 100%;
+		margin-bottom: 20px;
+
+		@media (min-width: 600px) {
+			flex-basis: calc(33% - 20px);
+			margin-bottom: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		.reputation-bar--item--icon {
+			flex: 0 0 40px;
+
+			.fa {
+				font-size: 40px;
+			}
+		}
+		.reputation-bar--item--content {
+			margin-left: 20px;
+			flex: 1 1 auto;
+
+			p {
+				margin: 0;
+			}
+
+			.reputation-bar--item--content--number {
+				font-size: 32px;
+				line-height: 1em;
+			}
+		}
+	}
 }
